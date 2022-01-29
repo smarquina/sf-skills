@@ -21,53 +21,44 @@ use function Symfony\Component\String\u;
  *
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class Validator
-{
-    public function validateUsername(?string $username): string
+class Validator {
+    public function validateName(?string $name): string
     {
-        if (empty($username)) {
-            throw new InvalidArgumentException('The username can not be empty.');
+        if (empty($name)) {
+            throw new InvalidArgumentException('The name can not be empty.');
         }
 
-        if (1 !== preg_match('/^[a-z_]+$/', $username)) {
+        if (1 !== preg_match('/^[0-9a-z_]+$/', $name)) {
             throw new InvalidArgumentException('The username must contain only lowercase latin characters and underscores.');
         }
 
-        return $username;
+        return $name;
     }
 
-    public function validatePassword(?string $plainPassword): string
+    public function validateAmount(?string $amount): string
     {
-        if (empty($plainPassword)) {
-            throw new InvalidArgumentException('The password can not be empty.');
+        if (empty($amount)) {
+            throw new InvalidArgumentException('The amount can not be empty.');
         }
 
-        if (u($plainPassword)->trim()->length() < 6) {
-            throw new InvalidArgumentException('The password must be at least 6 characters long.');
-        }
+        //TODO: validate
 
-        return $plainPassword;
+        return $amount;
     }
 
-    public function validateEmail(?string $email): string
+    /**
+     * @param string|null $startDate
+     * @return \DateTime
+     */
+    public function validateStartDate(?string $startDate): \DateTime
     {
-        if (empty($email)) {
-            throw new InvalidArgumentException('The email can not be empty.');
+        if (empty($startDate)) {
+            throw new InvalidArgumentException('The start date can not be empty.');
         }
 
-        if (null === u($email)->indexOf('@')) {
-            throw new InvalidArgumentException('The email should look like a real email.');
+        if ($startDateTime = \DateTime::createFromFormat('d-m-Y', $startDate)) {
+            return $startDateTime;
         }
-
-        return $email;
-    }
-
-    public function validateFullName(?string $fullName): string
-    {
-        if (empty($fullName)) {
-            throw new InvalidArgumentException('The full name can not be empty.');
-        }
-
-        return $fullName;
+        throw new InvalidArgumentException('Date can\'t be parsed');
     }
 }
