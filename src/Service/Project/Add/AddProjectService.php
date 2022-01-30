@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Project;
+namespace App\Service\Project\Add;
 
 use App\Entity\Project\Project;
 use App\Repository\Project\ProjectRepository;

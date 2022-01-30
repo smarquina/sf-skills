@@ -1,19 +1,10 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Command;
 
 
-use App\Service\Project\AddProjectRequest;
-use App\Service\Project\AddProjectService;
+use App\Service\Project\Add\AddProjectRequest;
+use App\Service\Project\Add\AddProjectService;
 use App\Utils\Validator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -24,24 +15,17 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 /**
- * A console command that creates users and stores them in the database.
+ * A console command that creates projects and stores them in the database.
  *
  * To use this command, open a terminal window, enter into your project
  * directory and execute the following:
  *
- *     $ php bin/console app:add-user
+ *     $ php bin/console project:add
  *
  * To output detailed information, increase the command verbosity:
  *
- *     $ php bin/console app:add-user -vv
+ *     $ php bin/console project:add -vv
  *
- * See https://symfony.com/doc/current/console.html
- *
- * We use the default services.yaml configuration, so command classes are registered as services.
- * See https://symfony.com/doc/current/console/commands_as_services.html
- *
- * @author Javier Eguiluz <javier.eguiluz@gmail.com>
- * @author Yonel Ceruto <yonelceruto@gmail.com>
  */
 #[AsCommand(
     name: 'project:add',
@@ -65,8 +49,6 @@ class AddProjectCommand extends Command {
     {
         $this
             ->setHelp($this->getCommandHelp())
-            // commands can optionally define arguments and/or options (mandatory and optional)
-            // see https://symfony.com/doc/current/components/console/console_arguments.html
             ->addArgument('name', InputArgument::OPTIONAL, 'The name of the new project')
             ->addArgument('amount', InputArgument::OPTIONAL, 'The amount of the project')
             ->addArgument('start_date', InputArgument::OPTIONAL, 'The start date of the project');
@@ -78,9 +60,6 @@ class AddProjectCommand extends Command {
      */
     protected function initialize(InputInterface $input, OutputInterface $output): void
     {
-        // SymfonyStyle is an optional feature that Symfony provides so you can
-        // apply a consistent look to the commands of your application.
-        // See https://symfony.com/doc/current/console/style.html
         $this->io = new SymfonyStyle($input, $output);
     }
 
@@ -101,7 +80,7 @@ class AddProjectCommand extends Command {
                             'If you prefer to not use this interactive wizard, provide the',
                             'arguments required by this command as follows:',
                             '',
-                            ' $ php bin/console app:add-user username password email@example.com',
+                            ' $ php bin/console project:add name amount 01-01-2000',
                             '',
                             'Now we\'ll ask you for the value of all the missing command arguments.',
                         ]);

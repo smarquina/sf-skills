@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Project;
+namespace App\Service\Project\Add;
 
 class AddProjectRequest {
 

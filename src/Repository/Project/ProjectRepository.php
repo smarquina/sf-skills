@@ -6,6 +6,8 @@ use App\Entity\Project\Project;
 use App\Pagination\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 class ProjectRepository extends ServiceEntityRepository {
@@ -26,6 +28,21 @@ class ProjectRepository extends ServiceEntityRepository {
                     ->setMaxResults($limit)
                     ->getQuery()
                     ->getResult();
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getAllProjectsStats(): array
+    {
+        try {
+            return $this->createQueryBuilder('project')
+                        ->select('count(project.id), sum(project.amount)')
+                        ->getQuery()
+                        ->getSingleResult();
+        } catch (NoResultException|NonUniqueResultException) {
+            return [0, 0];
+        }
     }
 
     public function save(Project $project, bool $flush = true): void
