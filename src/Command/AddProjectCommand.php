@@ -150,7 +150,7 @@ class AddProjectCommand extends Command {
     {
         return <<<'HELP'
             The <info>%command.name%</info> command creates new projects and saves them in the database:
-
+            Arguments: project: add name amount start_date(d-m-Y)
             HELP;
     }
 }

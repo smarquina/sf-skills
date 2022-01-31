@@ -1,39 +1,30 @@
-# Symfony Docker
+# Symfony Skills
 
-A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework, with full [HTTP/2](https://symfony.com/doc/current/weblink.html), HTTP/3 and HTTPS support.
+This simple demo app has the following capabilities
 
-![CI](https://github.com/dunglas/symfony-docker/workflows/CI/badge.svg)
+- Create projects via web / console
+- Search projects by name (same index list view as previous point)
+- Project stats: retrieves current sum of projects and total amount.
 
-## Getting Started
+### Console commands
+- Create project: (from outside php docker container) `$ php bin/console project:add`
+  - Command has verbose mode
+  - Can be created in a wizard way or inline params
+  - For more information read command help
+- Project stats: (from outside php docker container) `$ php bin/console project:stats`
+  - Command has verbose mode
 
-1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/)
-2. Run `docker-compose build --pull --no-cache` to build fresh images
-3. Run `docker-compose up` (the logs will be displayed in the current shell)
-4. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
-5. Run `docker-compose down --remove-orphans` to stop the Docker containers.
+## Architecture
+This application is written on top of the MVC pattern and following SOLID principles.
+The data flow between app logical layers is as following:
 
-## Features
+    Request
+        ↘️                
+         Controller ↔️ Service (may use request/reponse classes to communicate)
+             ↘️
+               Response/Output: in this case this is a view or a text response (case of commands).
+               This output may need data transformers in case to be API data response
 
-* Production, development and CI ready
-* Automatic HTTPS (in dev and in prod!)
-* HTTP/2, HTTP/3 and [Preload](https://symfony.com/doc/current/web_link.html) support
-* Built-in [Mercure](https://symfony.com/doc/current/mercure.html) hub
-* [Vulcain](https://vulcain.rocks) support
-* Just 2 services (PHP FPM and Caddy server)
-* Super-readable configuration
-
-**Enjoy!**
-
-## Docs
-
-1. [Build options](docs/build.md)
-2. [Using Symfony Docker with an existing project](docs/existing-project.md)
-3. [Support for extra services](docs/extra-services.md)
-4. [Deploying in production](docs/production.md)
-5. [Installing Xdebug](docs/xdebug.md)
-6. [Using a Makefile](docs/makefile.md)
-7. [Troubleshooting](docs/troubleshooting.md)
-
-## Credits
-
-Created by [Kévin Dunglas](https://dunglas.fr), co-maintained by [Maxime Helias](https://twitter.com/maxhelias) and sponsored by [Les-Tilleuls.coop](https://les-tilleuls.coop).
+Although request or response classes are used in the services, 
+a real communication bus is not being implemented. 
+This can be implemented with [messenger](https://symfony.com/doc/current/messenger.html).
