@@ -25,12 +25,12 @@ class Project {
      * @ORM\Column(type="text")
      */
     #[
-        Assert\NotBlank(message: 'name.blank'),
+        Assert\NotBlank(message: 'name.validation.blank'),
         Assert\Length(
             min: 5,
-            max: 10000,
-            minMessage: 'name.too_short',
-            maxMessage: 'name.too_long',
+            max: 255,
+            minMessage: 'name.validation.too_short',
+            maxMessage: 'name.validation.too_long',
         )
     ]
     private string $name;
@@ -45,10 +45,11 @@ class Project {
      * @ORM\Column(type="bigint")
      */
     #[
-        Assert\NotBlank(message: 'amount.blank'),
+        Assert\NotBlank(message: 'amount.validation.blank'),
+        Assert\Type(type: 'integer'),
         Assert\Length(
             min: 1,
-            minMessage: 'amount.minimum',
+            minMessage: 'amount.validation.minimum',
         )
     ]
     private int $amount;
@@ -126,10 +127,29 @@ class Project {
     }
 
     /**
+     * @return string
+     */
+    public function getPrintableAmount(): string
+    {
+        return sprintf("%.2f €", $this->amount / 100);
+    }
+
+    /**
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return \App\Entity\Project\Project
+     */
+    public static function fromEmptyProject(): Project
+    {
+        return (new self())
+            ->setName("")
+            ->setAmount(0)
+            ->setStartDate(new \DateTime());
     }
 }

@@ -1,0 +1,32 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.9a71ee5d.js",
+        "/build/946.d6232293.js",
+        "/build/965.cdf9139b.js",
+        "/build/app.f5249226.js"
+      ],
+      "css": [
+        "/build/965.f293ee30.css",
+        "/build/app.6ecfb259.css"
+      ]
+    },
+    "search": {
+      "js": [
+        "/build/runtime.9a71ee5d.js",
+        "/build/946.d6232293.js",
+        "/build/search.bd075ce1.js"
+      ]
+    }
+  },
+  "integrity": {
+    "/build/runtime.9a71ee5d.js": "sha384-L4SfYhQVswKjKEKxhUFNdD2PfZVf5e+dP5WHQBz8eTm5xp/Qy0Y3Vfw4GKUxNZrZ",
+    "/build/946.d6232293.js": "sha384-PlxLybSF0vAetyOTiPUUL/Wh/2rKRQYzzpju0ADJPI87LiDoe6GF/KN1G9saq1sm",
+    "/build/965.cdf9139b.js": "sha384-MUnAshjUoN5gpaSYk4+6OilDV0YkfEB0jZJS9PEgLDmUwuyE6WI4I4oRcF9/7YSu",
+    "/build/app.f5249226.js": "sha384-8PcIxeOmHdfbaKu6ySDtAlR6Vb4/Rop7hn1evAUtarf56Kcd7/XZwPZGHCCw4Hlg",
+    "/build/965.f293ee30.css": "sha384-I9QQHsHs/4mxYvhQumFbillxZXRYfLtL4GaSOXLYAdOfdueQsOOBVOFd6BzQkKz0",
+    "/build/app.6ecfb259.css": "sha384-T8ISqf6DNYTQn63pVmU+J71KBi8PobQw4SQRYFAauTAC4pwD57Kq5PRE2+EVIei3",
+    "/build/search.bd075ce1.js": "sha384-4sZzNnJ3572a7b0JwMKO31FNcRRQPg21wsxLjgpq0x5XylZ64AQxyQ/af4C/8S7p"
+  }
+}

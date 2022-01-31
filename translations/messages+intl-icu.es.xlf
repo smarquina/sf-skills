@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="not_available">
+                <source>not_available</source>
+                <target>No disponible</target>
+            </trans-unit>
+            <trans-unit id="mit_license">
+                <source>mit_license</source>
+                <target>Licencia MIT</target>
+            </trans-unit>
+
+            <trans-unit id="http_error.name">
+                <source>http_error.name</source>
+                <target>Error {status_code, number}</target>
+            </trans-unit>
+            <trans-unit id="http_error.description">
+                <source>http_error.description</source>
+                <target>Se ha producido un error desconocido (HTTP {status_code, number}) que ha impedido completar tu petición.</target>
+            </trans-unit>
+            <trans-unit id="http_error.suggestion">
+                <source>http_error.suggestion</source>
+                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+            </trans-unit>
+            <trans-unit id="http_error_403.description">
+                <source>http_error_403.description</source>
+                <target>No tienes permiso para acceder a este recurso.</target>
+            </trans-unit>
+            <trans-unit id="http_error_403.suggestion">
+                <source>http_error_403.suggestion</source>
+                <target>Solicita a los administradores de este sitio que te concedan permiso para acceder al recurso solicitado.</target>
+            </trans-unit>
+            <trans-unit id="http_error_404.description">
+                <source>http_error_404.description</source>
+                <target>No hemos podido encontrar la página solicitada.</target>
+            </trans-unit>
+            <trans-unit id="http_error_404.suggestion">
+                <source>http_error_404.suggestion</source>
+                <target><![CDATA[Comprueba que la dirección de la página está bien escrita o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+            </trans-unit>
+            <trans-unit id="http_error_500.description">
+                <source>http_error_500.description</source>
+                <target>Se ha producido un error grave en el servidor.</target>
+            </trans-unit>
+            <trans-unit id="http_error_500.suggestion">
+                <source>http_error_500.suggestion</source>
+                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+            </trans-unit>
+
+
+            <trans-unit id="title.source_code">
+                <source>title.source_code</source>
+                <target>Código fuente utilizado para mostrar esta página</target>
+            </trans-unit>
+            <trans-unit id="title.controller_code">
+                <source>title.controller_code</source>
+                <target>Código del controlador</target>
+            </trans-unit>
+            <trans-unit id="title.twig_template_code">
+                <source>title.twig_template_code</source>
+                <target>Código de la plantilla Twig</target>
+            </trans-unit>
+            <trans-unit id="action.show_code">
+                <source>action.show_code</source>
+                <target>Ver código</target>
+            </trans-unit>
+            <trans-unit id="help.show_code">
+               <source>help.show_code</source>
+               <target><![CDATA[Pulsa este botón para ver el código fuente del <strong>controlador</strong> y de la <strong>plantilla</strong> utilizados para crear esta página.]]></target>
+            </trans-unit>
+
+
+
+
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Guardar cambios</target>
+            </trans-unit>
+
+
+
+            <trans-unit id="action.back_to_list">
+                <source>action.back_to_list</source>
+                <target>Volver al listado de artículos</target>
+            </trans-unit>
+
+
+            <trans-unit id="action.close">
+                <source>action.close</source>
+                <target>Cerrar</target>
+            </trans-unit>
+
+            <trans-unit id="menu.toggle_nav">
+                <source>menu.toggle_nav</source>
+                <target>Turnar navegación</target>
+            </trans-unit>
+            <trans-unit id="menu.choose_language">
+                <source>menu.choose_language</source>
+                <target>Seleccionar idioma</target>
+            </trans-unit>
+
+            <!-- Attributes -->
+            <trans-unit id="project.name">
+                <source>project.name</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="project.amount">
+                <source>project.amount</source>
+                <target>Cantidad</target>
+            </trans-unit>
+            <trans-unit id="project.start_date">
+                <source>project.start_date</source>
+                <target>Fecha de inicio</target>
+            </trans-unit>
+
+            <!-- Help -->
+            <trans-unit id="project.help.amount">
+                <source>project.help.amount</source>
+                <target>Introduzca la cantidad como un valor entero sin decimales.</target>
+            </trans-unit>
+            <trans-unit id="project.label.create">
+                <source>project.label.create</source>
+                <target>Crear proyecto</target>
+            </trans-unit>
+             <trans-unit id="project.label.save_and_create_new">
+                <source>project.label.save_and_create_new</source>
+                <target>Guardar proyecto y crear otro</target>
+            </trans-unit>
+
+            <!-- Title -->
+            <trans-unit id="project.title.new">
+                <source>project.title.new</source>
+                <target>Nuevo proyecto</target>
+            </trans-unit>
+
+            <!-- Messages  -->
+            <trans-unit id="project.no_projects_found">
+                <source>projects.no_projects_found</source>
+                <target>No se ha encontrado ningún proyecto.</target>
+            </trans-unit>
+             <trans-unit id="project.created_successfully">
+                <source>project.created_successfully</source>
+                <target>¡Proyecto creado con éxito!</target>
+            </trans-unit>
+
+            <!-- Menu -->
+            <trans-unit id="project.menu.search">
+                <source>project.menu.search</source>
+                <target>Buscar</target>
+            </trans-unit>
+            <trans-unit id="project.menu.add">
+                <source>project.menu.add</source>
+                <target>Añadir proyecto</target>
+            </trans-unit>
+
+
+            <!-- Validation -->
+            <trans-unit id="name.validation.too_short">
+                <source>name.validation.too_short</source>
+                <target>El nombre es demasiado corto</target>
+            </trans-unit>
+            <trans-unit id="name.validation.too_long">
+                <source>name.validation.too_long</source>
+                <target>El nombre es demasiado largo</target>
+            </trans-unit>
+            <trans-unit id="name.validation.blank">
+                <source>name.validation.blank</source>
+                <target>El nombre no puede estar vacío</target>
+            </trans-unit>
+            <trans-unit id="amount.validation.blank">
+                <source>amount.validation.blank</source>
+                <target>El importe no puede estar vacío</target>
+            </trans-unit>
+            <trans-unit id="amount.validation.minimum">
+                <source>amount.validation.minimum</source>
+                <target>El importe ha de ser mayor</target>
+            </trans-unit>
+
+
+            <!-- Paginator -->
+            <trans-unit id="paginator.previous">
+                <source>paginator.previous</source>
+                <target>Anterior</target>
+            </trans-unit>
+            <trans-unit id="paginator.next">
+                <source>paginator.next</source>
+                <target>Siguiente</target>
+            </trans-unit>
+            <trans-unit id="paginator.current">
+                <source>paginator.current</source>
+                <target>(Actual)</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

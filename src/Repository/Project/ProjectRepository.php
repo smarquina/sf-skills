@@ -5,6 +5,7 @@ namespace App\Repository\Project;
 use App\Entity\Project\Project;
 use App\Pagination\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -22,12 +23,27 @@ class ProjectRepository extends ServiceEntityRepository {
     public function findByName(string $name, int $limit = Paginator::PAGE_SIZE): array
     {
         return $this->createQueryBuilder('project')
-                    ->where('p.name LIKE :term')
+                    ->where('project.name LIKE :term')
                     ->setParameter('term', '%' . $name . '%')
-                    ->orderBy('p.createdAt', 'DESC')
+                    ->orderBy('project.startDate', 'DESC')
                     ->setMaxResults($limit)
                     ->getQuery()
                     ->getResult();
+    }
+
+    /**
+     * @param int|null $page
+     * @return Paginator|ArrayCollection
+     */
+    public function findAll(?int $page = null): Paginator|ArrayCollection
+    {
+        $qb = $this->createQueryBuilder('project')
+                   ->orderBy('project.startDate', 'DESC');
+
+        return $page > 0
+            ? (new Paginator($qb))->paginate($page)
+            : new ArrayCollection($qb->getQuery()->getResult());
+
     }
 
     /**

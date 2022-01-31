@@ -29,9 +29,9 @@ class StatsProjectResponse {
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getPrintableTotalAmount(): int
+    public function getPrintableTotalAmount(): float
     {
         return $this->totalAmount / 100;
     }
