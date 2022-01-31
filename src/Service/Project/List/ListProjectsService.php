@@ -13,7 +13,11 @@ class ListProjectsService {
 
     public function handle(ListProjectsRequest $request): Paginator
     {
-        return $this->projectRepository->findAll($request->getPage());
+        return empty($request->getName())
+            ? $this->projectRepository
+                ->findAll($request->getPage())
+            : $this->projectRepository
+                ->findByName(name: $request->getName(), page: $request->getPage());
     }
 
 }

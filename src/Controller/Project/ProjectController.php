@@ -23,8 +23,12 @@ class ProjectController extends AbstractController {
     ]
     public function index(Request $request, int $page, ListProjectsService $service): Response
     {
+        if ($request->query->has('name')){
+            $name = $request->query->get('name');
+        }
+
         $paginator = $service->handle(
-            new ListProjectsRequest(page: $page)
+            new ListProjectsRequest(page: $page, name: $name ?? null)
         );
 
         return $this->render('project/project_index.html.twig', compact('paginator'));

@@ -6,7 +6,8 @@ namespace App\Service\Project\List;
 class ListProjectsRequest {
 
     public function __construct(
-        private int $page = 1
+        private int $page = 1,
+        private ?string $name = null
     )
     {
     }
@@ -17,6 +18,14 @@ class ListProjectsRequest {
     public function getPage(): int
     {
         return $this->page;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
     }
 
 }

@@ -38,9 +38,7 @@ class AddProjectType extends AbstractType {
                 'label'    => 'project.start_date',
                 'required' => true,
             ])
-            ->addEventListener(FormEvents::SUBMIT, static function (FormEvent $event) {
-               // dd($event->getData());
-            });
+            ->addEventListener(FormEvents::SUBMIT, static function (FormEvent $event) {});
     }
 
     /**

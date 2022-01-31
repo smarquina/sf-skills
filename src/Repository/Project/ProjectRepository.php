@@ -20,15 +20,26 @@ class ProjectRepository extends ServiceEntityRepository {
         parent::__construct($registry, Project::class);
     }
 
-    public function findByName(string $name, int $limit = Paginator::PAGE_SIZE): array
+    /**
+     * @param string   $name
+     * @param int      $limit
+     * @param int|null $page
+     * @return Paginator|ArrayCollection
+     */
+    public function findByName(string $name,
+                               int    $limit = Paginator::PAGE_SIZE,
+                               ?int   $page = null): Paginator|ArrayCollection
     {
-        return $this->createQueryBuilder('project')
-                    ->where('project.name LIKE :term')
-                    ->setParameter('term', '%' . $name . '%')
-                    ->orderBy('project.startDate', 'DESC')
-                    ->setMaxResults($limit)
-                    ->getQuery()
-                    ->getResult();
+        $qb = $this->createQueryBuilder('project')
+                   ->where('project.name LIKE :term')
+                   ->setParameter('term', '%' . $name . '%')
+                   ->orderBy('project.startDate', 'DESC');
+
+        return $page > 0
+            ? (new Paginator($qb))->paginate($page)
+            : new ArrayCollection($qb->getQuery()
+                                     ->setMaxResults($limit)
+                                     ->getResult());
     }
 
     /**
