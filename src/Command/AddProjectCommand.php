@@ -5,7 +5,7 @@ namespace App\Command;
 
 use App\Service\Project\Add\AddProjectRequest;
 use App\Service\Project\Add\AddProjectService;
-use App\Utils\Validator;
+use App\Utils\Validator\Project\Validator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -88,29 +88,32 @@ class AddProjectCommand extends Command {
         // Ask for the username if it's not defined
         $name = $input->getArgument('name');
         if (null !== $name) {
-            $this->io->text(" > <info>Username</info>: {$name}");
+            $this->io->text(" > <info>Name</info>: {$name}");
+            $name = $this->validator->validateName($name);
         } else {
-            $username = $this->io->ask('Name', null, [$this->validator, 'validateName']);
-            $input->setArgument('name', $username);
+            $name = $this->io->ask('Name', null, [$this->validator, 'validateName']);
         }
+        $input->setArgument('name', $name);
 
         // Ask for the amount if it's not defined
         $amount = $input->getArgument('amount');
         if (null !== $amount) {
-            $this->io->text(" > <info>Password</info>: {$amount}");
+            $this->io->text(" > <info>Amount</info>: {$amount}");
+            $amount = $this->validator->validateAmount($amount);
         } else {
             $amount = $this->io->ask('Amount (as int, no decimals)', null, [$this->validator, 'validateAmount']);
-            $input->setArgument('amount', $amount);
         }
+        $input->setArgument('amount', $amount);
 
         // Ask for the start date if it's not defined
         $startDate = $input->getArgument('start_date');
         if (null !== $startDate) {
             $this->io->text(" > <info>Start Date</info>: {$startDate}");
+            $startDate = $this->validator->validateStartDate($startDate);
         } else {
-            $email = $this->io->ask('Start date (d-m-Y)', null, [$this->validator, 'validateStartDate']);
-            $input->setArgument('start_date', $email);
+            $startDate = $this->io->ask('Start date (d-m-Y)', null, [$this->validator, 'validateStartDate']);
         }
+        $input->setArgument('start_date', $startDate);
     }
 
     /**

@@ -6,11 +6,11 @@ dockerized with [Docker compose](https://docs.docker.com/compose/).
 
 Install steps are the following:
 * Download the [repo](https://github.com/smarquina/sf-skills)
-* Make sure you have Docker/Docker compose installed in your system
+* Make sure you have Docker / Docker-compose installed in your system
 * Run `$ make build` to build the images and download vendor
 * Run `$ make run` to up all containers
 
-All containers are running now. 
+🐳 All containers are running now 🐳
 
 If this is a clean install, you must previously create DB schema and tables. Follow next steps:
 * Go to project folder in the terminal
@@ -22,6 +22,7 @@ That's all!! go to `http://localhost:8001` in your browser and enjoy!
 ---------------------------
 
 ##Additional info
+
 Environment variables can be customized. Project vars are located under `.env.docker` file.
 Following vars can be modified:
 * DB_USERNAME: DB username (default: symfony)

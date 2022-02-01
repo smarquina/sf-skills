@@ -26,3 +26,8 @@ yarn-error.log
 
 /.idea
 /.mysql
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###

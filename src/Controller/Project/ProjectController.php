@@ -57,7 +57,6 @@ class ProjectController extends AbstractController {
                                       $project->getStartDate())
             );
 
-
             $this->addFlash('success', 'post.created_successfully');
 
             if ($form->get('saveAndCreateNew')->isClicked()) {

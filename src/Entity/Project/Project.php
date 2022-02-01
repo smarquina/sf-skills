@@ -135,6 +135,16 @@ class Project {
     }
 
     /**
+     * @param \DateTime $createdAt
+     * @return Project
+     */
+    public function setCreatedAt(\DateTime $createdAt): Project
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime

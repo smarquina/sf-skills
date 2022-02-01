@@ -14,6 +14,11 @@ This simple demo app has the following capabilities
 - Project stats: (from outside php docker container) `$ php bin/console project:stats`
   - Command has verbose mode
 
+### 🐞 Testing 
+To run tests, please go to project root and run:
+
+    $ docker compose exec php ./vendor/bin/phpunit
+
 ## Architecture
 This application is written on top of the MVC pattern and following SOLID principles.
 The data flow between app logical layers is as following:
